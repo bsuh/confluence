@@ -15,7 +15,7 @@ import (
 	"github.com/anacrolix/torrent/iplist"
 	"github.com/anacrolix/torrent/storage"
 
-	"github.com/anacrolix/confluence/confluence"
+	"github.com/bsuh/confluence/confluence"
 )
 
 var flags = struct {
@@ -76,7 +76,7 @@ func newTorrentClient() (ret *torrent.Client, err error) {
 		storageProvider := fc.AsResourceProvider()
 		return storage.NewResourcePieces(storageProvider)
 	}()
-	return torrent.NewClient((&torrent.Config{
+	return torrent.NewClient((&torrent.ClientConfig{
 		IPBlocklist:    blocklist,
 		DefaultStorage: storage,
 		PublicIp4:      flags.PublicIp4,
